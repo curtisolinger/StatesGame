@@ -31,10 +31,7 @@ while continue_mapping:
         correct_guesses += 1
         state_list.append(answer_state)
 
-missing_states = []
-for state in data.state.unique():
-    if state not in state_list:
-        missing_states.append(state)
+missing_states = [state for state in data.state.unique() if state not in state_list]
 
 missing_states_df = pandas.DataFrame(missing_states)
 missing_states_df.to_csv('missing_states.csv', index=False)
